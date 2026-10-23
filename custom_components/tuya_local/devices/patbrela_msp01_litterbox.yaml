@@ -1,0 +1,278 @@
+name: Litter box
+products:
+  - id: unvgwjvxa1dgmzjz
+    manufacturer: PATBRELA
+    model: MSP01
+entities:
+  - entity: sensor
+    name: Status
+    class: enum
+    icon: "mdi:cat"
+    dps:
+      - id: 24
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: POWER_OFF
+            value: power_off
+          - dps_val: POWER_ON
+            value: power_on
+          - dps_val: POWER_ON_RESET
+            value: resetting
+          - dps_val: POWER_ON_RESET_PAUSE
+            value: reset_paused
+          - dps_val: IDLE
+            value: idle
+          - dps_val: CLEANING
+            value: cleaning
+          - dps_val: CLEAN_PAUSE
+            value: cleaning_paused
+          - dps_val: APPEASING
+            value: leveling
+          - dps_val: APPEASE_PAUSE
+            value: leveling_paused
+          - dps_val: DUMPING
+            value: emptying
+          - dps_val: DUMP_PAUSE
+            value: emptying_paused
+          - dps_val: CLEAN_STOP
+            value: cleaned
+          - dps_val: APPEASE_STOP
+            value: leveled
+          - dps_val: DUMP_STOP
+            value: emptied
+          - dps_val: RESET_STOP
+            value: reset_done
+          - dps_val: FAN_RUNING
+            value: fan_running
+          - dps_val: FAN_STOP
+            value: fan_stopped
+          - dps_val: BIN_FULL
+            value: bin_full
+          - dps_val: MOTOR_EXECEPTION
+            value: motor_fault
+          - dps_val: PIP_EXCEPTION
+            value: sensor_fault
+          - dps_val: CAT_ENTER
+            value: cat_inside
+          - dps_val: CAT_LEAVE
+            value: cat_left
+          - dps_val: NO_BARREL
+            value: no_drum
+          - dps_val: CAT_CLOSE
+            value: cat_nearby
+          - dps_val: CAT_LEAVEL
+            value: cat_left
+  - entity: button
+    name: Clean
+    icon: "mdi:broom"
+    dps:
+      - id: 3
+        type: boolean
+        name: button
+  - entity: button
+    name: Level litter
+    icon: "mdi:waves"
+    dps:
+      - id: 101
+        type: boolean
+        name: button
+  - entity: button
+    name: Empty litter
+    icon: "mdi:delete-empty"
+    dps:
+      - id: 102
+        type: boolean
+        name: button
+  - entity: button
+    name: Tare scale
+    icon: "mdi:scale-balance"
+    category: config
+    dps:
+      - id: 104
+        type: boolean
+        optional: true
+        name: button
+  - entity: switch
+    translation_key: auto_clean
+    category: config
+    dps:
+      - id: 4
+        type: boolean
+        optional: true
+        name: switch
+  - entity: number
+    name: Auto clean delay
+    category: config
+    class: duration
+    icon: "mdi:timer-sand"
+    dps:
+      - id: 5
+        type: integer
+        name: value
+        unit: s
+        range:
+          min: 20
+          max: 600
+        mapping:
+          - step: 5
+  - entity: sensor
+    class: weight
+    dps:
+      - id: 6
+        type: integer
+        optional: true
+        name: sensor
+        unit: g
+        class: measurement
+  - entity: sensor
+    name: Daily times used
+    icon: "mdi:emoticon-poop"
+    dps:
+      - id: 7
+        type: integer
+        name: sensor
+        unit: times
+  - entity: sensor
+    name: Last visit duration
+    class: duration
+    dps:
+      - id: 8
+        type: integer
+        optional: true
+        name: sensor
+        unit: s
+  - entity: sensor
+    name: Times used
+    icon: "mdi:counter"
+    category: diagnostic
+    dps:
+      - id: 106
+        type: integer
+        name: sensor
+  - entity: switch
+    translation_key: sleep
+    category: config
+    dps:
+      - id: 10
+        type: boolean
+        name: switch
+  - entity: time
+    name: Sleep start
+    category: config
+    dps:
+      - id: 11
+        type: integer
+        name: minute
+        range:
+          min: 0
+          max: 1440
+  - entity: time
+    name: Sleep end
+    category: config
+    dps:
+      - id: 12
+        type: integer
+        name: minute
+        range:
+          min: 0
+          max: 1440
+  - entity: switch
+    translation_key: uv_sterilization
+    category: config
+    dps:
+      - id: 13
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Waste bin sensor
+    icon: "mdi:motion-sensor"
+    category: config
+    dps:
+      - id: 103
+        type: boolean
+        name: switch
+  - entity: switch
+    translation_key: motion_detection
+    category: config
+    dps:
+      - id: 115
+        type: boolean
+        optional: true
+        name: switch
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 114
+        type: boolean
+        optional: true
+        name: lock
+  - entity: number
+    name: Cat trigger weight
+    category: config
+    class: weight
+    icon: "mdi:weight-gram"
+    dps:
+      - id: 119
+        type: integer
+        name: value
+        unit: g
+        range:
+          min: 500
+          max: 1500
+  - entity: binary_sensor
+    name: Bin full
+    icon: "mdi:delete-alert"
+    class: problem
+    dps:
+      - id: 109
+        type: boolean
+        name: sensor
+  - entity: binary_sensor
+    name: Motor fault
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 108
+        type: boolean
+        name: sensor
+  - entity: binary_sensor
+    name: Drum missing
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 110
+        type: boolean
+        name: sensor
+  - entity: sensor
+    name: Last action
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 107
+        type: string
+        optional: true
+        name: sensor
+        mapping:
+          - dps_val: DEV_NON
+            value: none
+          - dps_val: DEV_CLEAN
+            value: cleaned
+          - dps_val: DEV_APPEASE
+            value: leveled
+          - dps_val: DEV_DUMP
+            value: emptied
+          - dps_val: DEV_CHANG_BAG
+            value: bag_changed
+          - dps_val: RESET
+            value: reset
+  - entity: button
+    translation_key: factory_reset
+    hidden: true
+    category: config
+    dps:
+      - id: 23
+        type: boolean
+        optional: true
+        name: button

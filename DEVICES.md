@@ -1285,6 +1285,7 @@ port and password.
 - Nityers Titan camera pet feeder
 - Oneisall PFD-002 Pro IR pet feeder
 - Papifeed pet feeder
+- Patbrela MSP01 cat litter box
 - Pawspik Microchip pet feeder
 - Petempo PAF-02 pet feeder
 - Petlibro PLAF103 pet feeder
